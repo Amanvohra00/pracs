@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body { font-family: Arial; background: #e0e0e0; padding: 20px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Form Validation</h1>
+    <form id="myForm">
+        <label>Email:</label>
+        <input type="text" id="email" required>
+        <span class="error" id="emailError"></span><br>
+
+        <label>Password:</label>
+        <input type="password" id="password" required>
+        <span class="error" id="passwordError"></span><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordPattern = /^.{6,}$/;
+
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('passwordError').textContent = '';
+
+            if (!emailPattern.test(email)) {
+                document.getElementById('emailError').textContent = 'Invalid email.';
+            }
+            if (!passwordPattern.test(password)) {
+                document.getElementById('passwordError').textContent = 'Min 6 characters.';
+            }
+            if (emailPattern.test(email) && passwordPattern.test(password)) {
+                document.getElementById('result').textContent = 'Form submitted!';
+                this.reset();
+            }
+        });
+    </script>
+</body>
+</html>

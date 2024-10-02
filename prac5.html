@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Example</title>
+    <style>
+        body { font-family: Arial; background: #e0e0e0; padding: 20px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Data Manipulation</h1>
+    <div class="result" id="result"></div>
+
+    <script>
+        // Variable declarations
+        let name = "Alice"; // String
+        let age = 25; // Number
+        let isStudent = true; // Boolean
+        let scores = [85, 92, 78]; // Array
+
+        // Conditional statement
+        let message = isStudent ? `${name} is a student.` : `${name} is not a student.`;
+
+        // Loop to calculate average score
+        let total = 0;
+        for (let score of scores) {
+            total += score;
+        }
+        let average = total / scores.length;
+
+        // Display results
+        document.getElementById('result').innerHTML = `
+            <p>${message}</p>
+            <p>Average Score: ${average.toFixed(2)}</p>
+        `;
+    </script>
+</body>
+</html>
